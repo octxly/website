@@ -4,10 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import cntl from "cntl";
 
-interface NavLinkProps {
-    href: string;
-    text: string;
-}
+
+type NavLinkProps = { href: string; text: string; }
 
 function NavLink({ href, text }: NavLinkProps) {
     const pathname = usePathname();
@@ -16,10 +14,11 @@ function NavLink({ href, text }: NavLinkProps) {
     const base = cntl`
         px-5 
         py-1 
-        rounded-md 
-        text-m 
-        transition-colors 
+        rounded-md  
         duration-300
+        border-2
+        border-bgprimary
+        text-textprimary
     `
 
     const active = cntl`
@@ -27,7 +26,8 @@ function NavLink({ href, text }: NavLinkProps) {
     `
 
     const inactive = cntl`
-        hover:bg-bgprimary/25`
+        hover:bg-bgprimary/50
+    `
 
     return (
         <Link
@@ -41,8 +41,9 @@ function NavLink({ href, text }: NavLinkProps) {
 
 export default function Nav() {
     return (
-        <nav className="w-full sticky top-0 z-50 bg-gradient-to-b from-bgsecondary to-bgsecondary/25 hover:to-bgsecondary/50 transition duration-500">
-            <ul className="max-w-5xl mx-auto flex items-center justify-center gap-2.5 p-4">
+        <nav className="w-full sticky top-0 flex justify-between bg-gradient-to-b from-bgsecondary to-bgsecondary/25 hover:to-bgsecondary/50 transition duration-250 px-[20vw]">
+            <h1 className="w-1/4 flex items-center text-lg font-bold text-textprimary">Julian Rees</h1>
+            <ul className="flex items-center justify-center gap-2.5 p-4">
                 <li>
                     <NavLink href="/" text="Home" />
                 </li>

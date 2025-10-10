@@ -1,32 +1,40 @@
 @import "tailwindcss";
 
 :root {
-    --background-primary: #ffffff;
-    --background-secondary: #171717;
+    --background-primary: #323844;
+    --background-secondary: #21252b;
 
     --primary: #174583;
     --secondary: #0c54da;
 
-    --text-primary: #ffffff;
-    --text-secondary: #000000;
+    --text-primary: #abb2bf;
+    --text-secondary: #e06c75;
+    --text-tertiary: #98c379;
+    --text-quaternary: #d19a66;
 }
 
 @theme inline {
     --color-bgprimary: var(--background-primary);
     --color-bgsecondary: var(--background-secondary);
-    --font-sans: var(--font-geist-sans);
-    --font-mono: var(--font-geist-mono);
+
+    --color-primary: var(--primary);
+    --color-secondary: var(--secondary);
+
+    --color-textprimary: var(--text-primary);
+    --color-textsecondary: var(--text-secondary);
+    --color-texttertiary: var(--text-tertiary);
+    --color-textquaternary: var(--text-quaternary);
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background-primary: #0a0a0a;
-        --background-secondary: #ededed;
-    }
-}
+/*@media (prefers-color-scheme: dark) {*/
+/*    !*:root {*!*/
+/*    !*    --background-primary: #0a0a0a;*!*/
+/*    !*    --background-secondary: #ededed;*!*/
+/*    !*}*!*/
+/*}*/
 
 body {
     background: var(--background-primary);
     color: var(--background-secondary);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
