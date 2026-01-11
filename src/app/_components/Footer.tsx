@@ -1,10 +1,11 @@
-'use client'
-
 export default function Footer() {
     return (
-        <footer className="w-full bottom-0 flex items-center justify-center">
-            <p className="text-textprimary">
+        <footer className="w-full bottom-0 flex flex-col items-center justify-center bg-bgsecondary">
+            <p className="text-textprimary mt-1">
                 Built by Julian Rees
+            </p>
+            <p className="text-textprimary mt-1">
+                Updated November 2025
             </p>
         </footer>
     );

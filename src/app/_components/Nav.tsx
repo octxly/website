@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -41,19 +41,13 @@ function NavLink({ href, text }: NavLinkProps) {
 
 export default function Nav() {
     return (
-        <nav className="w-full sticky top-0 flex justify-between bg-gradient-to-b from-bgsecondary to-bgsecondary/25 hover:to-bgsecondary/50 transition duration-250 px-[20vw]">
-            <h1 className="w-1/4 flex items-center text-lg font-bold text-textprimary">Julian Rees</h1>
-            <ul className="flex items-center justify-center gap-2.5 p-4">
-                <li>
-                    <NavLink href="/" text="Home" />
-                </li>
-                <li>
-                    <NavLink href="/projects" text="Projects" />
-                </li>
-                <li>
-                    <NavLink href="/contact" text="Contact" />
-                </li>
-            </ul>
+        <nav className="w-full sticky top-0 flex justify-between bg-bgsecondary px-[25vw] py-2.5 z-1">
+            <h1 className="w-1/4 flex items-center text-xl font-bold text-textprimary"><Link href="/">Julian Rees</Link></h1>
+            <div className="flex items-center justify-center gap-2.5">
+                <NavLink href="/" text="Home" />
+                <NavLink href="/projects" text="Projects" />
+                <NavLink href="/about" text="About" />
+            </div>
         </nav>
     );
 }
