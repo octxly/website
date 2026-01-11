@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import "./globals.css";
-import Nav from "./_components/Nav";
+import "../globals.css";
+import Nav from "../_components/Nav";
 import Footer from "@/app/_components/Footer";
 
 export const metadata: Metadata = {
@@ -17,9 +17,9 @@ export default function RootLayout({
         <html lang="en">
             <body className="min-h-screen flex flex-col w-screen">
                 <Nav />
-                <main className="flex flex-1 px-[20vw]">
+                <div className="flex flex-1">
                     {children}
-                </main>
+                </div>
                 <Footer />
             </body>
         </html>

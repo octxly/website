@@ -3,6 +3,7 @@
 :root {
     --background-primary: #323844;
     --background-secondary: #21252b;
+    --background-tertiary: #282c34;
 
     --primary: #174583;
     --secondary: #0c54da;
@@ -16,6 +17,7 @@
 @theme inline {
     --color-bgprimary: var(--background-primary);
     --color-bgsecondary: var(--background-secondary);
+    --color-bgtertiary: var(--background-tertiary);
 
     --color-primary: var(--primary);
     --color-secondary: var(--secondary);
