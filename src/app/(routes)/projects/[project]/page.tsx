@@ -30,7 +30,7 @@ export default async function Page({params}: { params: Promise<{ project: string
                 </div>
             </section>
             <div className="flex flex-1">
-                <section className="relative flex flex-col flex-1 text-textprimary bg-bgsecondary rounded-2xl">
+                <section className="relative flex flex-col flex-1 text-textprimary bg-bgsecondary rounded-2xl px-5">
                     <TableContents contents={
                         pageProject.body.map((value, index) => {
                             if ("title" in value && value.title != undefined) return {title: value.title, id: index.toString()};
@@ -39,7 +39,7 @@ export default async function Page({params}: { params: Promise<{ project: string
                     } />
 
                     {pageProject.body.map((element, index) => {
-                        return <div key={index} id={index.toString()}>
+                        return <div key={index} id={index.toString()} className="mt-2.5">
                             { renderStackContent(element) }
                         </div>
                     })}
@@ -57,9 +57,12 @@ function renderStackContent(element: ProjectComponents) {
                 <h5>{element.subtitle}</h5>
             </article>
         case StackComponent.Break:
-            return <hr className="m-5 border-2 border-textprimary"/>
+            return <hr className="border-2 border-textprimary"/>
         case StackComponent.Row:
-            return null
+            return <article className="">
+                <h4>{element.title}</h4>
+                <p>{element.text}</p>
+            </article>
         case StackComponent.FullImage:
             return null
         case StackComponent.Video:

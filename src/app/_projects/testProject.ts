@@ -16,6 +16,12 @@ const testProject: Project = {
         },
         {
             type: StackComponent.Break
+        },
+        {
+            type: StackComponent.Row,
+            title: "Text Section",
+            text: "This is a selection of example text to test formatting and stuff. Idk why you would be seeing this since this project shouldn't be linked anywhere, but hi, I guess...",
+            imageSrc: ""
         }
     ]
 }
