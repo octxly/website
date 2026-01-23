@@ -17,9 +17,14 @@ export default function RootLayout({
         <html lang="en">
             <body className="min-h-screen flex flex-col w-screen">
                 <Nav />
-                <div className="flex flex-1">
+                {/*<div className="flex flex-1">*/}
+                {/*    {children}*/}
+                {/*</div>*/}
+
+                <main className="flex flex-1 flex-col px-5 sm:px-[20vw] py-5">
                     {children}
-                </div>
+                </main>
+
                 <Footer />
             </body>
         </html>

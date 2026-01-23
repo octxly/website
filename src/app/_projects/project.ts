@@ -37,6 +37,8 @@ export interface Break {
     type: StackComponent.Break
 }
 
+export type ProjectComponents = Row | Header | FullImage | Video | Break
+
 export default interface Project {
     title: string
     featured: boolean
@@ -44,6 +46,6 @@ export default interface Project {
     link: string
     featureImgSrc: string
     description: string
-    designGoals: string[]
-    body: (Row | Header | FullImage | Video | Break)[]
+    techUsed: string[]
+    body: ProjectComponents[]
 }
