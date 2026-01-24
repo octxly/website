@@ -1,7 +1,7 @@
-import indexes from "@/app/_projects/indexes";
+import {indexes} from "@/app/_projects/indexes";
 import {notFound} from "next/navigation";
 import Image from "next/image";
-import {ProjectComponents, StackComponent} from "@/app/_projects/project";
+import {StackComponent, StackComponentType} from "@/app/_projects/project";
 import TableContents from "@/app/_components/TableContents";
 
 export default async function Page({params}: { params: Promise<{ project: string }>
@@ -12,6 +12,7 @@ export default async function Page({params}: { params: Promise<{ project: string
 
     if (pageProject == undefined) {
         notFound()
+        return
     }
 
     return (
@@ -49,24 +50,42 @@ export default async function Page({params}: { params: Promise<{ project: string
     )
 }
 
-function renderStackContent(element: ProjectComponents) {
+function renderStackContent(element: StackComponent) {
     switch (element.type) {
-        case StackComponent.Header:
+        case StackComponentType.Header:
             return <article className="flex flex-col items-center">
                 <h4 className="text-textquaternary text-2xl">{element.title}</h4>
                 <h5>{element.subtitle}</h5>
             </article>
-        case StackComponent.Break:
+        case StackComponentType.Break:
             return <hr className="border-2 border-textprimary"/>
-        case StackComponent.Row:
-            return <article className="">
-                <h4>{element.title}</h4>
-                <p>{element.text}</p>
+        case StackComponentType.ImageRow:
+            return <article className={`flex flex-col sm:flex-row ${element.reverse ? "sm:flex-row-reverse" : ""} gap-5`}>
+                <div className="flex-1">
+                    <h4 className="text-textquaternary text-2xl">{element.title}</h4>
+                    <p className="text-sm">{element.text}</p>
+                </div>
+                <div className="flex-1 relative min-h-50">
+                    <Image className="object-cover" src={element.imageSrc} alt={element.imgAlt} fill/>
+                </div>
             </article>
-        case StackComponent.FullImage:
-            return null
-        case StackComponent.Video:
-            return null
+        case StackComponentType.TextRow:
+            return <article className={`gap-5`}>
+                    <h4 className="text-textquaternary text-2xl">{element.title}</h4>
+                    <p className="text-sm">{element.text}</p>
+            </article>
+        case StackComponentType.FullImage:
+            return <article>
+                <h4 className="text-center text-2xl text-textquaternary">{element.title}</h4>
+                <Image className="object-cover" src={element.imageSrc} alt={element.imageAlt} width={1000} height={0}/>
+                <p>{element.subtitle}</p>
+            </article>
+        case StackComponentType.Video:
+            return <article>
+                <h4>{element.title}</h4>
+                <video src={element.videoSrc} controls/>
+                <p>{element.subtitle}</p>
+            </article>
     }
 }
 

@@ -19,6 +19,7 @@ function NavLink({ href, text }: NavLinkProps) {
         border-2
         border-bgprimary
         text-textprimary
+        
     `
 
     const active = cntl`

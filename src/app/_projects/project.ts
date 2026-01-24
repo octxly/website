@@ -1,51 +1,61 @@
-export enum StackComponent {
-    Row,
+export enum StackComponentType {
+    ImageRow,
     Header,
     FullImage,
     Video,
-    Break
+    Break,
+    TextRow
 }
 
-export interface Row {
-    type: StackComponent.Row;
+export interface ImageRow {
+    type: StackComponentType.ImageRow;
     imageSrc: string;
+    imgAlt: string;
+    title: string;
+    text: string;
+    reverse: boolean;
+}
+
+export interface TextRow {
+    type: StackComponentType.TextRow;
     title: string;
     text: string;
 }
 
 export interface Header {
-    type: StackComponent.Header;
+    type: StackComponentType.Header;
     title: string;
     subtitle?: string;
 }
 
 export interface FullImage {
-    type: StackComponent.FullImage;
+    type: StackComponentType.FullImage;
     title?: string;
-    imageSrc: string;
     subtitle?: string;
+    imageSrc: string;
+    imageAlt: string;
 }
 
 export interface Video {
-    type: StackComponent.Video;
+    type: StackComponentType.Video;
     title?: string;
     videoSrc: string;
     subtitle?: string;
 }
 
 export interface Break {
-    type: StackComponent.Break
+    type: StackComponentType.Break
 }
 
-export type ProjectComponents = Row | Header | FullImage | Video | Break
+export type StackComponent = ImageRow | Header | FullImage | Video | Break | TextRow
 
 export default interface Project {
     title: string
-    featured: boolean
     timePeriod: string
     link: string
     featureImgSrc: string
+    featureImgAlt: string
     description: string
     techUsed: string[]
-    body: ProjectComponents[]
+    body: StackComponent[]
 }

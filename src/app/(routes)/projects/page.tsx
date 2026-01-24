@@ -1,4 +1,6 @@
 import Image from "next/image";
+import {indexes} from "@/app/_projects/indexes";
+import ProjectCard from "@/app/_components/ProjectCard";
 
 export default function ProjectsPage() {
     return (
@@ -10,6 +12,11 @@ export default function ProjectsPage() {
                 </p>
             </header>
             <hr className="m-5 border-2"/>
+            <section>
+                {indexes.map((project, index) => {
+                    return <ProjectCard key={index} project={project}/>
+                })}
+            </section>
         </>
     )
 }
