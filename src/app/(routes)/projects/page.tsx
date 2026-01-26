@@ -12,7 +12,7 @@ export default function ProjectsPage() {
                 </p>
             </header>
             <hr className="m-5 border-2"/>
-            <section>
+            <section className="flex gap-5">
                 {indexes.map((project, index) => {
                     return <ProjectCard key={index} project={project}/>
                 })}

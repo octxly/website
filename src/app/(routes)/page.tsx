@@ -25,7 +25,7 @@ export default function Home() {
 
             <section className="flex flex-col">
                 <h2 className="text-textsecondary text-3xl text-center">Take a Look</h2>
-                <div>
+                <div className="flex justify-center gap-5">
                     {featuredIndexes.map((project, index) => {
                         return <ProjectCard project={project} key={index} />
                     })}

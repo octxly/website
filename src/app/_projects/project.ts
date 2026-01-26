@@ -10,15 +10,15 @@ export enum StackComponentType {
 export interface ImageRow {
     type: StackComponentType.ImageRow;
     imageSrc: string;
-    imgAlt: string;
-    title: string;
+    imageAlt: string;
+    title?: string;
     text: string;
     reverse: boolean;
 }
 
 export interface TextRow {
     type: StackComponentType.TextRow;
-    title: string;
+    title?: string;
     text: string;
 }
 

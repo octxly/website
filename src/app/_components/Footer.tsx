@@ -5,7 +5,7 @@ export default function Footer() {
                 Built by Julian Rees
             </p>
             <p className="text-textprimary mt-1">
-                Updated November 2025
+                Updated January 2026
             </p>
         </footer>
     );

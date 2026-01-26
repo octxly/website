@@ -31,7 +31,7 @@ export default async function Page({params}: { params: Promise<{ project: string
                 </div>
             </section>
             <div className="flex flex-1">
-                <section className="relative flex flex-col flex-1 text-textprimary bg-bgsecondary rounded-2xl px-5">
+                <section className="relative flex flex-col flex-1 text-textprimary bg-bgsecondary rounded-2xl px-5 pb-5">
                     <TableContents contents={
                         pageProject.body.map((value, index) => {
                             if ("title" in value && value.title != undefined) return {title: value.title, id: index.toString()};
@@ -66,7 +66,7 @@ function renderStackContent(element: StackComponent) {
                     <p className="text-sm">{element.text}</p>
                 </div>
                 <div className="flex-1 relative min-h-50">
-                    <Image className="object-cover" src={element.imageSrc} alt={element.imgAlt} fill/>
+                    <Image className="object-cover rounded-2xl" src={element.imageSrc} alt={element.imageAlt} fill/>
                 </div>
             </article>
         case StackComponentType.TextRow:
@@ -75,15 +75,17 @@ function renderStackContent(element: StackComponent) {
                     <p className="text-sm">{element.text}</p>
             </article>
         case StackComponentType.FullImage:
-            return <article>
+            return <article className="flex flex-col">
                 <h4 className="text-center text-2xl text-textquaternary">{element.title}</h4>
-                <Image className="object-cover" src={element.imageSrc} alt={element.imageAlt} width={1000} height={0}/>
+                <div className="relative min-h-100">
+                    <Image className="object-cover object-center" src={element.imageSrc} alt={element.imageAlt} fill/>
+                </div>
                 <p>{element.subtitle}</p>
             </article>
         case StackComponentType.Video:
             return <article>
-                <h4>{element.title}</h4>
-                <video src={element.videoSrc} controls/>
+                <h4 className="text-center text-2xl text-textquaternary">{element.title}</h4>
+                <video className="rounded-2xl" src={element.videoSrc} controls/>
                 <p>{element.subtitle}</p>
             </article>
     }
