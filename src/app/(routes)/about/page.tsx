@@ -1,4 +1,5 @@
 import Image from "next/image";
+import {FileTreeNode, NodeType} from "@/app/_components/SidebarBrowser";
 
 export default function ContactPage() {
     return (
@@ -29,4 +30,15 @@ export default function ContactPage() {
             </article>
         </>
     )
+}
+
+export function getAboutTree(): FileTreeNode {
+    return {
+        type: NodeType.Page,
+        name: "about",
+        href: "/about",
+        children: [
+
+        ]
+    }
 }

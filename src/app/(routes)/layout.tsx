@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import "../globals.css";
-import Nav from "../_components/Nav";
+import TopBar from "../_components/TopBar";
 import Footer from "@/app/_components/Footer";
+import SidebarBrowser from "@/app/_components/SidebarBrowser";
+import PageTabs from "@/app/_components/PageTabs";
 
 export const metadata: Metadata = {
     title: "Julian Rees",
@@ -16,14 +18,17 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className="min-h-screen flex flex-col w-screen">
-                <Nav />
-                {/*<div className="flex flex-1">*/}
-                {/*    {children}*/}
-                {/*</div>*/}
+                <TopBar />
 
-                <main className="flex flex-1 flex-col px-5 sm:px-[20vw] py-5">
-                    {children}
-                </main>
+                <div className="flex-1 flex">
+                    <SidebarBrowser />
+                    <div className="flex flex-1 flex-col min-h-0">
+                        <PageTabs />
+                        <main className="flex-1 px-5 sm:px-[20vw] py-5 max-h-100 overflow-auto">
+                            {children}
+                        </main>
+                    </div>
+                </div>
 
                 <Footer />
             </body>

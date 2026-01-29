@@ -7,14 +7,14 @@ export default function TableContents(props: { contents: ({title: string, id: st
     const [open, setOpen] = useState(false);
 
     return <>
-        <nav className="relative text-center bg-bgtertiary rounded-t-2xl sm:absolute sm:right-full sm:w-[20vw] sm:max-w-50" onClick={() => setOpen(!open)}>
+        <nav className="relative text-center bg-bgsecondary rounded-t-2xl sm:absolute sm:right-full sm:w-[20vw] sm:max-w-65" onClick={() => setOpen(!open)}>
             Table of Contents
 
-            <nav className={`absolute flex flex-col w-full z-50 bg-bgprimary sm:text-left transition-opacity duration-150 sm:opacity-100 ${open ? "opacity-100" : "opacity-0"}`}>
+            <nav className={`absolute rounded-b-2xl bg-bgtertiary object-cover flex flex-col w-full z-50 sm:text-left transition-opacity duration-150 sm:opacity-100 ${open ? "opacity-100" : "opacity-0"}`}>
                 {props.contents.map((value, index) => {
                     if (value == null) return null
 
-                    return <Link key={index} href={`#${value.id}`} className={`${index % 2 == 1 ? "bg-bgtertiary" : " bg-bgprimary"} `}>
+                    return <Link key={index} href={`#${value.id}`} className="transition-colors duration-75 hover:bg-bgsecondary px-2.5">
                         {value.title}
                     </Link>
                 })}

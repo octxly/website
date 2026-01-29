@@ -1,6 +1,7 @@
 import Image from "next/image";
 import {indexes} from "@/app/_projects/indexes";
 import ProjectCard from "@/app/_components/ProjectCard";
+import {FileTreeNode, NodeType} from "@/app/_components/SidebarBrowser";
 
 export default function ProjectsPage() {
     return (
@@ -19,4 +20,15 @@ export default function ProjectsPage() {
             </section>
         </>
     )
+}
+
+export function getProjectsTree(): FileTreeNode {
+    return {
+        type: NodeType.Page,
+        name: "about",
+        href: "/about",
+        children: [
+
+        ]
+    }
 }

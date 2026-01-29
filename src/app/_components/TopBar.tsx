@@ -40,15 +40,15 @@ function NavLink({ href, text }: NavLinkProps) {
     );
 }
 
-export default function Nav() {
+export default function TopBar() {
     return (
         <nav className="w-full sticky top-0 flex justify-center sm:justify-between bg-bgsecondary sm:px-[20vw] py-2.5 z-100">
             <h1 className="hidden sm:flex shrink items-center text-xl font-bold text-textprimary"><Link href="/">Julian Rees</Link></h1>
-            <div className="flex items-center justify-center gap-2.5">
-                <NavLink href="/" text="Home" />
-                <NavLink href="/projects" text="Projects" />
-                <NavLink href="/about" text="About" />
-            </div>
+            {/*<div className="flex items-center justify-center gap-2.5">*/}
+            {/*    <NavLink href="/" text="Home" />*/}
+            {/*    <NavLink href="/projects" text="Projects" />*/}
+            {/*    <NavLink href="/about" text="About" />*/}
+            {/*</div>*/}
         </nav>
     );
 }

@@ -78,7 +78,7 @@ function renderStackContent(element: StackComponent) {
             return <article className="flex flex-col">
                 <h4 className="text-center text-2xl text-textquaternary">{element.title}</h4>
                 <div className="relative min-h-100">
-                    <Image className="object-cover object-center" src={element.imageSrc} alt={element.imageAlt} fill/>
+                    <Image className="object-cover object-center rounded-2xl" src={element.imageSrc} alt={element.imageAlt} fill/>
                 </div>
                 <p>{element.subtitle}</p>
             </article>
