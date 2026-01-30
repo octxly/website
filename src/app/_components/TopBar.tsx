@@ -1,54 +1,33 @@
 'use client'
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import {useRouter} from "next/navigation";
 import cntl from "cntl";
+import Image from "next/image";
 
+export default function TopBar(){
+    const router = useRouter()
 
-type NavLinkProps = { href: string; text: string; }
+    const btnStyles = cntl`block w-7.5 hover:bg-bgprimary rounded`
 
-function NavLink({ href, text }: NavLinkProps) {
-    const pathname = usePathname();
-    const isActive = pathname === href;
-
-    const base = cntl`
-        px-5 
-        py-1 
-        rounded-md  
-        duration-300
-        border-2
-        border-bgprimary
-        text-textprimary
-        
-    `
-
-    const active = cntl`
-        bg-bgprimary 
-    `
-
-    const inactive = cntl`
-        hover:bg-bgprimary/50
-    `
+    const toggleFullscreen = () => {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+        } else {
+            document.exitFullscreen();
+        }
+    };
 
     return (
-        <Link
-            href={href}
-            className={`${base} ${isActive ? active : inactive}`}
-        >
-            {text}
-        </Link>
-    );
-}
-
-export default function TopBar() {
-    return (
-        <nav className="w-full sticky top-0 flex justify-center sm:justify-between bg-bgsecondary sm:px-[20vw] py-2.5 z-100">
-            <h1 className="hidden sm:flex shrink items-center text-xl font-bold text-textprimary"><Link href="/">Julian Rees</Link></h1>
-            {/*<div className="flex items-center justify-center gap-2.5">*/}
-            {/*    <NavLink href="/" text="Home" />*/}
-            {/*    <NavLink href="/projects" text="Projects" />*/}
-            {/*    <NavLink href="/about" text="About" />*/}
-            {/*</div>*/}
+        <nav className="w-full h-12 flex bg-bgsecondary p-2.5 z-50 justify-between items-center">
+            <div className="flex">
+                <Image src="/favicon.ico" alt="Icon" width={25} height={0}/>
+                <h1 className="ml-5 text-textprimary"><b>Julian Rees's Website</b></h1>
+            </div>
+            <div className="flex text-textprimary gap-2.5 font-bold">
+                <button className={btnStyles} onClick={() => router.push("/")}>-</button>
+                <button className={btnStyles} onClick={toggleFullscreen}>o</button>
+                <button className={btnStyles} onClick={() => window.location.href = "/"}>x</button>
+            </div>
         </nav>
     );
 }

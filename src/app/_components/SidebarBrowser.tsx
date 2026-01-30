@@ -3,6 +3,12 @@
 import Link from "next/link";
 import {useState} from "react";
 import {usePathname} from "next/navigation";
+import {FaFolder} from "react-icons/fa";
+import {BsTextLeft} from "react-icons/bs";
+import {IoCodeSlash} from "react-icons/io5";
+import {getHomeTree} from "@/app/(routes)/home/page";
+import {getAboutTree} from "@/app/(routes)/about/page";
+import {getProjectsTree} from "@/app/(routes)/projects/page";
 
 export enum NodeType {
     Page, Section, Folder
@@ -20,73 +26,53 @@ const fileTree: FileTreeNode = {
     name: "julianrees.ca",
     href: "/",
     children: [
-        {
-            type: NodeType.Page,
-            name: "home",
-            href: "/home",
-            children: []
-        },
-        {
-            type: NodeType.Page,
-            name: "projects",
-            href: "/projects",
-            children: [
-                {
-                    type: NodeType.Page,
-                    name: "tank",
-                    href: "/projects/tank",
-                    children: [
-                        {
-                            type: NodeType.Section,
-                            name: "home section",
-                            href: "/projects/tank#1",
-                            children: []
-                        }
-                    ]
-                }
-            ]
-        },
+        getHomeTree(),
+        getProjectsTree(),
         {
             type: NodeType.Page,
             name: "resume",
             href: "/resume",
             children: []
         },
-        {
-            type: NodeType.Page,
-            name: "about",
-            href: "/about",
-            children: []
-        }
+        getAboutTree()
     ]
 }
 
 export default function SidebarBrowser() {
-    return <nav className="w-75 bg-bgtertiary resize-x flex flex-col text-textprimary">
-        <TreeNode node={fileTree} nodeDepth={0} />
+    return <nav className="min-w-60 h-full bg-bgtertiary resize-x flex flex-col text-textprimary overflow-y-auto overflow-x-hidden border-r-5 border-bgsecondary">
+        <TreeNode node={fileTree} nodeDepth={0} defaultOpen/>
     </nav>
 }
 
-function TreeNode({ node, nodeDepth } : { node: FileTreeNode, nodeDepth: number}) {
-    const [open, setOpen] = useState(true);
+function TreeNode({ node, nodeDepth, defaultOpen } : { node: FileTreeNode, nodeDepth: number, defaultOpen:boolean }) {
+    const [open, setOpen] = useState(defaultOpen);
 
     const isActive = usePathname() == node.href && node.type != NodeType.Folder;
 
     return <div>
-        <Link href={node.href} style={{paddingLeft: `${nodeDepth * 1.5}rem`}} className={`block p-0.5 hover:bg-bgsecondary ${isActive ? "bg-bgprimary" : ""}`}>
+        <Link href={node.href} style={{paddingLeft: `${(nodeDepth * 1) + (node.children.length == 0 ? 1.5 : 0)}rem`}} className={`flex items-center p-0.5 hover:bg-bgsecondary ${isActive ? "bg-bgprimary" : ""}`}>
             {
-                node.type != NodeType.Section && node.children.length > 0 ?
-                    <button className={`mr-1 hover:bg-bgprimary rounded-sm px-1 min-h-full`} onClick={e => {e.preventDefault(); setOpen(!open)}}>
+                node.children.length > 0 ?
+                    <button className="w-6 aspect-square hover:bg-bgprimary rounded-sm min-h-full" onClick={e => {e.preventDefault(); setOpen(!open)}}>
                         <div className={`transition-transform duration-100 rotate-270 ${open ? "" : "-scale-x-100"}`}>&lt;</div>
                     </button>
                     : null
             }
+            <div className="w-5">{FileIcon(node.type)}</div>
             {node.name}
         </Link>
         <div className={`${open ? "visible" : "hidden"}`}>
             {
-                node.children.map((child, index) => <TreeNode key={index} node={child} nodeDepth={nodeDepth + 1}/>)
+                node.children.map((child, index) => <TreeNode key={index} node={child} nodeDepth={nodeDepth + 1} defaultOpen={child.children.filter(e => e.type != NodeType.Section).length > 0}/>)
             }
         </div>
     </div>
+}
+
+function FileIcon(type: NodeType) {
+    switch (type) {
+        case NodeType.Folder: return <FaFolder />
+        case NodeType.Page: return <IoCodeSlash className="text-texttertiary" />
+        case NodeType.Section: return <BsTextLeft className="text-textsecondary" />
+    }
 }

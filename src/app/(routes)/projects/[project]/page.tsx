@@ -17,7 +17,7 @@ export default async function Page({params}: { params: Promise<{ project: string
 
     return (
         <>
-            <section className="h-100 relative w-screen -mx-5 sm:-mx-[20vw] -mt-5">
+            <section className="h-100 relative -mx-5 sm:-mx-[20vw] -mt-5">
                 <Image className="object-cover object-center" src={pageProject.featureImgSrc} alt="Hello" fill={true}/>
                 <div className="absolute inset-0 flex flex-col items-center justify-end bg-linear-to-b from-bgprimary/0 to-bgprimary">
                     <header className="bg-bgsecondary p-5 rounded-2xl mb-10 text-center">

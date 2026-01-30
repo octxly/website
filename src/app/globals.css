@@ -5,8 +5,8 @@
     --background-secondary: #21252b;
     --background-tertiary: #282c34;
 
-    --primary: #174583;
-    --secondary: #0c54da;
+    --primary: #0c54da;
+    --secondary: #174583;
 
     --text-primary: #abb2bf;
     --text-secondary: #e06c75;
@@ -39,4 +39,5 @@ body {
     background: var(--background-primary);
     color: var(--background-secondary);
     font-family: Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    line-height: 1.5;
 }

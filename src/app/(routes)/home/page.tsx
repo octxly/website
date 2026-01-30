@@ -7,7 +7,7 @@ import {FileTreeNode, NodeType} from "@/app/_components/SidebarBrowser";
 export default function Home() {
     return (
         <>
-            <section className="flex flex-1 flex-col md:flex-row items-center justify-around gap-5">
+            <section className="flex flex-1 flex-col md:flex-row items-center justify-around gap-5" id="intro">
                 <article className="flex flex-col text-center items-center md:text-left md:items-start">
                     <h2 className="text-textprimary text-3xl">Hi, I&#39;m</h2>
                     <h1 className="text-textsecondary text-5xl">Julian Rees</h1>
@@ -24,7 +24,7 @@ export default function Home() {
 
             <hr className="m-5 border-2"/>
 
-            <section className="flex flex-col">
+            <section className="flex flex-col" id="featured">
                 <h2 className="text-textsecondary text-3xl text-center">Take a Look</h2>
                 <div className="flex justify-center gap-5">
                     {featuredIndexes.map((project, index) => {
@@ -39,10 +39,21 @@ export default function Home() {
 export function getHomeTree(): FileTreeNode {
     return {
         type: NodeType.Page,
-        name: "about",
-        href: "/about",
+        name: "home",
+        href: "/home",
         children: [
-
+            {
+                type: NodeType.Section,
+                name: "intro",
+                href: "/home#intro",
+                children: []
+            },
+            {
+                type: NodeType.Section,
+                name: "featured",
+                href: "/home#featured",
+                children: []
+            }
         ]
     }
 }
