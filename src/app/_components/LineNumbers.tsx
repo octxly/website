@@ -59,12 +59,12 @@ export default function LineNumbers() {
     return (
         <div 
             ref={containerRef}
-            className="flex flex-col text-right pr-2 select-none text-textprimary/30 bg-bgsecondary w-10 text-sm overflow-hidden"
+            className="flex flex-col text-right select-none text-content-main/30 bg-base-300 w-10 text-sm overflow-hidden"
             style={{ lineHeight: '1.5rem' }}
         >
-            {Array.from({ length: Math.max(lineCount, 1) }).map((_, i) => (
-                <div key={i}>{i + 1}</div>
-            ))}
+            {Array.from({ length: Math.max(lineCount, 1) }).map((_, i) => {
+                return <div key={i} className={`pr-2 border-r-3 ${Math.random() > 0.6 ? "border-content-accent" : "border-base-300"}`}>{i + 1}</div>
+            })}
         </div>
     );
 }

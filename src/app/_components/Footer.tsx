@@ -8,7 +8,7 @@ export default function Footer() {
     const pathSection = url.split("/").filter(e => e != "")
 
     return (
-        <footer className="w-full sticky bottom-0 flex items-center justify-between bg-bgsecondary text-textprimary px-2.5 z-50">
+        <footer className="w-full sticky bottom-0 flex items-center justify-between bg-base-300 text-content-main px-2.5 z-50">
             <div className="flex">
                 {
                     pathSection.map((e, index) => {

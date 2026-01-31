@@ -6,8 +6,8 @@ export default function ProjectsPage() {
     return (
         <>
             <header className="flex flex-col items-start justify-between" id="intro">
-                <h2 className="text-textsecondary text-3xl">Projects</h2>
-                <p className="text-textprimary text-lg">
+                <h2 className="text-content-major text-3xl">Projects</h2>
+                <p className="text-content-main text-lg">
                     All of the projects that I've done and catalogued.
                 </p>
             </header>

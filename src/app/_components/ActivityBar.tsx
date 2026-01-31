@@ -10,15 +10,15 @@ import {useRouter} from "next/navigation";
 export default function ActivityBar({children}: {children: any}) {
     const [browserOpen, setBrowserOpen] = useState(true)
 
-    const containerStyles = cntl`m-1 rounded p-1 hover:bg-bgprimary`
+    const containerStyles = cntl`m-1 rounded p-1 hover:bg-base-100`
     const iconStyles = cntl`aspect-square size-5.5`
 
     const router = useRouter()
 
     return <div className="flex">
-        <nav className="flex flex-col w-10 bg-bgsecondary text-textprimary justify-between">
+        <nav className="flex flex-col w-10 bg-base-300 text-content-main justify-between">
             <div className="flex flex-col">
-                <button className={`${containerStyles} ${browserOpen ? "bg-bgprimary" : ""}`} onClick={() => setBrowserOpen(!browserOpen)}><FaFolder className={iconStyles}/></button>
+                <button className={`${containerStyles} ${browserOpen ? "bg-base-100" : ""}`} onClick={() => setBrowserOpen(!browserOpen)}><FaFolder className={iconStyles}/></button>
 
                 <button className={`${containerStyles}`}><IoTerminal className={iconStyles}/></button>
             </div>

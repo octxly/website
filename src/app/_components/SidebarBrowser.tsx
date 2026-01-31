@@ -39,7 +39,7 @@ const fileTree: FileTreeNode = {
 }
 
 export default function SidebarBrowser() {
-    return <nav className="min-w-60 h-full bg-bgtertiary resize-x flex flex-col text-textprimary overflow-y-auto overflow-x-hidden border-r-5 border-bgsecondary">
+    return <nav className="min-w-60 h-full bg-base-200 resize-x flex flex-col text-content-main overflow-y-auto overflow-x-hidden border-r-5 border-base-300">
         <TreeNode node={fileTree} nodeDepth={0} defaultOpen/>
     </nav>
 }
@@ -50,10 +50,10 @@ function TreeNode({ node, nodeDepth, defaultOpen } : { node: FileTreeNode, nodeD
     const isActive = usePathname() == node.href && node.type != NodeType.Folder;
 
     return <div>
-        <Link href={node.href} style={{paddingLeft: `${(nodeDepth * 1) + (node.children.length == 0 ? 1.5 : 0)}rem`}} className={`flex items-center p-0.5 hover:bg-bgsecondary ${isActive ? "bg-bgprimary" : ""}`}>
+        <Link href={node.href} style={{paddingLeft: `${(nodeDepth * 1) + (node.children.length == 0 ? 1.5 : 0)}rem`}} className={`flex items-center p-0.5 hover:bg-base-300 ${isActive ? "bg-base-100" : ""}`}>
             {
                 node.children.length > 0 ?
-                    <button className="w-6 aspect-square hover:bg-bgprimary rounded-sm min-h-full" onClick={e => {e.preventDefault(); setOpen(!open)}}>
+                    <button className="w-6 aspect-square hover:bg-base-100 rounded-sm min-h-full" onClick={e => {e.preventDefault(); setOpen(!open)}}>
                         <div className={`transition-transform duration-100 rotate-270 ${open ? "" : "-scale-x-100"}`}>&lt;</div>
                     </button>
                     : null
@@ -72,7 +72,7 @@ function TreeNode({ node, nodeDepth, defaultOpen } : { node: FileTreeNode, nodeD
 function FileIcon(type: NodeType) {
     switch (type) {
         case NodeType.Folder: return <FaFolder />
-        case NodeType.Page: return <IoCodeSlash className="text-texttertiary" />
-        case NodeType.Section: return <BsTextLeft className="text-textsecondary" />
+        case NodeType.Page: return <IoCodeSlash className="text-content-minor" />
+        case NodeType.Section: return <BsTextLeft className="text-content-major" />
     }
 }

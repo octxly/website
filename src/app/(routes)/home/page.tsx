@@ -9,11 +9,11 @@ export default function Home() {
         <>
             <section className="flex flex-1 flex-col md:flex-row items-center justify-around gap-5" id="intro">
                 <article className="flex flex-col text-center items-center md:text-left md:items-start">
-                    <h2 className="text-textprimary text-3xl">Hi, I&#39;m</h2>
-                    <h1 className="text-textsecondary text-5xl">Julian Rees</h1>
-                    <h2 className="text-textprimary text-3xl">Welcome to my website!</h2>
-                    <p className="text-texttertiary text-xl">
-                        I buid stuff I'm passionate about.
+                    <h2 className="text-3xl">Hi, I&#39;m</h2>
+                    <h1 className="text-content-major text-5xl">Julian Rees</h1>
+                    <h2 className="text-3xl">Welcome to my website!</h2>
+                    <p className="text-content-minor text-xl">
+                        I build stuff I'm passionate about.
                     </p>
                     <ButtonLink text="Take a Look Around" href="/projects"/>
                 </article>
@@ -25,7 +25,7 @@ export default function Home() {
             <hr className="m-5 border-2"/>
 
             <section className="flex flex-col" id="featured">
-                <h2 className="text-textsecondary text-3xl text-center">Take a Look</h2>
+                <h2 className="text-content-major text-3xl text-center">Take a Look</h2>
                 <div className="flex justify-center gap-5">
                     {featuredIndexes.map((project, index) => {
                         return <ProjectCard project={project} key={index} />

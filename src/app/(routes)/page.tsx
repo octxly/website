@@ -2,6 +2,8 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import Link from "next/link";
+import ButtonLink from "@/app/_components/ButtonLink";
 
 export default function GetStarted() {
     const router = useRouter();
@@ -10,19 +12,18 @@ export default function GetStarted() {
         const referer = document.referrer;
         const host = window.location.host;
 
-        // If there's no referer, it's a direct entry (external)
-        // If there's a referer, check if it's from our own domain
         if (!referer || !referer.includes(host)) {
             router.replace("/home");
         }
     }, [router]);
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-[50vh]">
-            <h1 className="text-2xl font-bold">Welcome back!</h1>
-            <p className="mt-4">You are currently at the root route.</p>
-            <p className="mt-2">
-                Visit <a href="/home" className="text-blue-500 underline">Home</a> to see the main content.
+        <div className="flex flex-col items-center justify-center min-h-[50vh] gap-2 text-content-main">
+            <h1 className="text-2xl text-content-major">Get Started</h1>
+            <p>You are at the root route of this website.</p>
+            <p>Select a website in the sidebar browser to get started.</p>
+            <p>
+                 <ButtonLink text="Go to home" href="/home" /> for main content
             </p>
         </div>
     );
