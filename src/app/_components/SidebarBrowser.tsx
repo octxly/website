@@ -39,7 +39,7 @@ const fileTree: FileTreeNode = {
 }
 
 export default function SidebarBrowser() {
-    return <nav className="min-w-60 h-full bg-base-200 resize-x flex flex-col text-content-main overflow-y-auto overflow-x-hidden border-r-5 border-base-300">
+    return <nav className="h-full w-75 bg-base-200 resize-x flex flex-col text-content-main overflow-y-auto overflow-x-hidden border-r-5 border-base-300">
         <TreeNode node={fileTree} nodeDepth={0} defaultOpen/>
     </nav>
 }

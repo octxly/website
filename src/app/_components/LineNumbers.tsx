@@ -63,7 +63,7 @@ export default function LineNumbers() {
             style={{ lineHeight: '1.5rem' }}
         >
             {Array.from({ length: Math.max(lineCount, 1) }).map((_, i) => {
-                return <div key={i} className={`pr-2 border-r-3 ${Math.random() > 0.6 ? "border-content-accent" : "border-base-300"}`}>{i + 1}</div>
+                return <div key={i} className={`pr-2`}>{i + 1}</div>
             })}
         </div>
     );

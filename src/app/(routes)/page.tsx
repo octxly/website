@@ -12,6 +12,8 @@ export default function GetStarted() {
         const referer = document.referrer;
         const host = window.location.host;
 
+        console.log(referer)
+
         if (!referer || !referer.includes(host)) {
             router.replace("/home");
         }

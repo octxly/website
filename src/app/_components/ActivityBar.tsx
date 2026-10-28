@@ -15,7 +15,7 @@ export default function ActivityBar({children}: {children: any}) {
 
     const router = useRouter()
 
-    return <div className="flex">
+    return <div className="relative flex">
         <nav className="flex flex-col w-10 bg-base-300 text-content-main justify-between">
             <div className="flex flex-col">
                 <button className={`${containerStyles} ${browserOpen ? "bg-base-100" : ""}`} onClick={() => setBrowserOpen(!browserOpen)}><FaFolder className={iconStyles}/></button>
@@ -29,7 +29,7 @@ export default function ActivityBar({children}: {children: any}) {
             </div>
         </nav>
 
-        <div className={`flex-1 ${browserOpen ? "visible" : "hidden"}`}>
+        <div className={`flex-1 ${browserOpen ? "visible" : "hidden"} absolute md:static h-full z-20 top-0 left-10`}>
             {children}
         </div>
     </div>
