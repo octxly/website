@@ -27,7 +27,7 @@ function PageTabs({ tabs, setTabs, onExitClick }: PageTabsProps) {
                     tabs.map(href =>
                         <Reorder.Item key={href} value={href} className={`h-full text-content-main flex items-center ${href == currentUrl ? "bg-base-100 border-t-3 border-t-accent-100" : "bg-base-300 border-t-3 border-t-base-300"}`}>
                             <Link className="pl-2.5 h-full content-center" href={href} draggable={false}>
-                                {href.split("/").at(-2)}
+                                {href.split("/").at(-1)}
                             </Link>
                             <button className={`mx-1 w-5 rounded aspect-square ${href == currentUrl ? "hover:bg-base-300" : "hover:bg-base-100"}`} onClick={event => onExitClick(event, href)}>x</button>
                         </Reorder.Item>
